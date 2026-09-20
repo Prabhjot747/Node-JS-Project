@@ -23,6 +23,4 @@ const checkConnection = async () => {
     }
 }
 
-
-
-module.exports = { checkConnection ,sequelize}
+module.exports = { checkConnection, sequelize }

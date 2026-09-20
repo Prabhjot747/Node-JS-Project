@@ -1,7 +1,8 @@
 const express = require('express')
-const router = express.Router()
+const app = express()
+
 const { createMotorcycle } = require('../controllers/motorcyleControllers.js')
 
-router.post('/', createMotorcycle)
+app.post('/create/motorcycle', createMotorcycle)
 
-module.exports = router
+module.exports = app

@@ -13,7 +13,7 @@ const { AppError } = require('./utils/errorHandler')
 
 app.use(express.json())
 const swaggerDocs = swaggerJsDoc(swaggerOptions)
-// app.use("/api/motorcycle",createMotorcycle)
+app.use('/api/motorcycle', createMotorcycle)
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs))
 
 // This route throws a custom error

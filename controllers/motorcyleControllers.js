@@ -15,6 +15,7 @@ const createMotorcycle = async (request, response) => {
                 console.log('Data inserted successfully')
             }
         )
+        response.status(201).send(`User added with ID: ${result.row[0].id}`)
     } catch (error) {
         response.status(400).json({
             message: 'Error creating motorcycle',

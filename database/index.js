@@ -30,9 +30,6 @@ const checkConnection = async () => {
     } catch (error) {
         console.error('Unable to connect to the database:', error)
     }
-    // finally {
-    //     sequelize.close()
-    // }
 }
 
 module.exports = { checkConnection, sequelize }

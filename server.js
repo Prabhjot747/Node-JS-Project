@@ -14,7 +14,7 @@ const { AppError } = require('./utils/errorHandler')
 app.use(express.json())
 const swaggerDocs = swaggerJsDoc(swaggerOptions)
 
-app.use('/api/motorcycle', router)
+app.use('/api/v1', router)
 
 // app.use('/api/motorcycle', createMotorcycle)
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs))

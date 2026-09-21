@@ -1,0 +1,3 @@
+CREATE DATABASE royalenfieldeichermotordivison;
+USE royalenfieldeichermotordivison;
+

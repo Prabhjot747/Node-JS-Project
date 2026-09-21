@@ -3,7 +3,7 @@ const app = express()
 const swaggerJsDoc = require('swagger-jsdoc')
 const swaggerUi = require('swagger-ui-express')
 const { swaggerOptions } = require('./swagger/swagger.js')
-const { createMotorcycle } = require('./routes/motorcycle')
+const router = require('./routes/motorcycle')
 
 const { checkConnection } = require('./database/index.js')
 
@@ -13,7 +13,10 @@ const { AppError } = require('./utils/errorHandler')
 
 app.use(express.json())
 const swaggerDocs = swaggerJsDoc(swaggerOptions)
-app.use('/api/motorcycle', createMotorcycle)
+
+app.use('/api/motorcycle', router)
+
+// app.use('/api/motorcycle', createMotorcycle)
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs))
 
 // This route throws a custom error

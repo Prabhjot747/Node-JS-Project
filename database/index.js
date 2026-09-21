@@ -7,8 +7,19 @@ const sequelize = new Sequelize(
     'welcome@123',
     {
         host: '127.0.0.1',
-        dialect:
-            'mariadb' /* one of 'mysql' | 'postgres' | 'sqlite' | 'mariadb' | 'mssql' | 'db2' | 'snowflake' | 'oracle' */,
+        dialect: 'mariadb',
+        pool: {
+            min: 0,
+            max: 5,
+            idle: 10000,
+        },
+        define: {
+            charset: 'utf8',
+            timestamps: false,
+        },
+        benchmark: false,
+        logging: console.log,
+        ssl: true,
     }
 )
 
@@ -18,9 +29,10 @@ const checkConnection = async () => {
         console.log('Connection has been established successfully.')
     } catch (error) {
         console.error('Unable to connect to the database:', error)
-    } finally {
-        sequelize.close()
     }
+    // finally {
+    //     sequelize.close()
+    // }
 }
 
 module.exports = { checkConnection, sequelize }

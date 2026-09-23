@@ -19,10 +19,10 @@ router.get('/get/motorcycle', async (req, res) => {
 
 router.post('/create/motorcycle/details', async (req, res) => {
     try {
-        const { motorcycle_name } = req.body
-        console.log('motorcycle_name', motorcycle_name)
+        const { motorcycleName } = req.body
+        console.log('motorcycleName', motorcycleName)
         const newMotorcycle = await MotorcycleSpareParts.create({
-            motorcycle_name,
+            motorcycleName,
         })
 
         res.status(201).json({
@@ -41,10 +41,10 @@ router.post('/create/motorcycle/details', async (req, res) => {
 router.patch('/update/motorcycle/details/:id', async (req, res) => {
     try {
         const id = req.params.id
-        const motorcycle_name = req.body.motorcycle_name
+        const motorcycleName = req.body.motorcycleName
         console.log('req.body..', req.body)
         const motorCycleList = await MotorcycleSpareParts.update(
-            { motorcycle_name: motorcycle_name },
+            { motorcycleName: motorcycleName },
             { where: { id: id } }
         )
         console.log('motorCycleList...', motorCycleList)

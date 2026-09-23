@@ -3,7 +3,7 @@ const router = express.Router()
 
 const { Motorcycle } = require('../models/motorcycle.js')
 
-const { createMotorcycle } = require('../controllers/motorcyleControllers.js')
+// const { createMotorcycle } = require('../controllers/motorcyleControllers.js')
 
 // app.post('/create/motorcycle', createMotorcycle)
 
@@ -26,9 +26,13 @@ router.get('/get/motorcycle', async (req, res) => {
 
 router.post('/create/motorcycle', async (req, res) => {
     try {
-        const { motorcycle_name } = req.body
-        console.log('motorcycle_name', motorcycle_name)
-        const newMotorcycle = await Motorcycle.create({ motorcycle_name })
+        const { motorcycleName } = req.body
+        console.log('motorcycleName', motorcycleName)
+        const newMotorcycle = await Motorcycle.create({
+            motorcycleName,
+            createdAt: new Date().toISOString(),
+            updatedAt: new Date().toISOString(),
+        })
 
         res.status(201).json({
             message: 'Motorcycle created successfully',
@@ -46,10 +50,13 @@ router.post('/create/motorcycle', async (req, res) => {
 router.patch('/update/motorcycle/:id', async (req, res) => {
     try {
         const id = req.params.id
-        const motorcycle_name = req.body.motorcycle_name
+        const motorcycleName = req.body.motorcycleName
         console.log('req.body..', req.body)
         const motorCycleList = await Motorcycle.update(
-            { motorcycle_name: motorcycle_name },
+            {
+                motorcycleName: motorcycleName,
+                updatedAt: new Date().toISOString(),
+            },
             { where: { id: id } }
         )
         console.log('motorCycleList...', motorCycleList)

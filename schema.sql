@@ -32,8 +32,5 @@ lubrication VARCHAR(20) NOT NULL,
 airCleaner VARCHAR(10) NOT NULL,
 createdAt DATETIME  NOT NULL COMMENT "created time",
 updatedAt DATETIME  NOT NULL COMMENT "updated time",
-motorcycleId INT, FOREIGN KEY (motorcycleId) REFERENCES motorcycle(id)  
+motorcycleId INT, FOREIGN KEY (motorcycleId) REFERENCES motorcycle(id)
 );
-
-
-

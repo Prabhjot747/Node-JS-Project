@@ -4,6 +4,7 @@ const swaggerJsDoc = require('swagger-jsdoc')
 const swaggerUi = require('swagger-ui-express')
 const { swaggerOptions } = require('./swagger/swagger.js')
 const router = require('./routes/motorcycle')
+const engines = require('./routes/engineRoutes.js')
 
 const { checkConnection } = require('./database/index.js')
 
@@ -14,7 +15,8 @@ const { AppError } = require('./utils/errorHandler')
 app.use(express.json())
 const swaggerDocs = swaggerJsDoc(swaggerOptions)
 
-app.use('/api/v1', router)
+app.use('/api/v1/motorcycle', router)
+app.use('/api/v1/engine', engines)
 
 // app.use('/api/motorcycle', createMotorcycle)
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs))

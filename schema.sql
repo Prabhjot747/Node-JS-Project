@@ -11,7 +11,7 @@ updatedAt DATETIME  NOT NULL COMMENT "updated time"
 
 -- Spare part
 CREATE TABLE engines(
-id INT  PRIMARY KEY,
+id INT AUTO_INCREMENT PRIMARY KEY,
 name VARCHAR(20) NOT NULL UNIQUE,
 dimensionLength NUMERIC ,
 dimensionWidth NUMERIC ,
@@ -20,7 +20,7 @@ strokeWidth NUMERIC ,
 boreWidth NUMERIC ,
 maximumPowerBHP NUMERIC ,
 maximumPowerHP NUMERIC ,
-ignitionSystem VARCHAR(20) NOT NULL,
+ignitionSystem VARCHAR(50) NOT NULL,
 gearBox VARCHAR(20) NOT NULL,
 engineOil VARCHAR(20) NOT NULL,
 engineStart VARCHAR(10) NOT NULL,
@@ -29,7 +29,7 @@ maximumTorqueNM NUMERIC ,
 maximumTorqueRPM  NUMERIC ,
 clutch VARCHAR(10) NOT NULL,
 lubrication VARCHAR(20) NOT NULL,
-airCleaner VARCHAR(10) NOT NULL,
+airCleaner VARCHAR(50) NOT NULL,
 createdAt DATETIME  NOT NULL COMMENT "created time",
 updatedAt DATETIME  NOT NULL COMMENT "updated time",
 motorcycleId INT, FOREIGN KEY (motorcycleId) REFERENCES motorcycle(id)

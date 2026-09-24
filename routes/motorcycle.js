@@ -7,7 +7,7 @@ const { Motorcycle } = require('../models/motorcycle.js')
 
 // app.post('/create/motorcycle', createMotorcycle)
 
-router.get('/get/motorcycle', async (req, res) => {
+router.get('/get', async (req, res) => {
     try {
         const motorCycleList = await Motorcycle.findAll()
         // res.send(200).json({
@@ -24,14 +24,15 @@ router.get('/get/motorcycle', async (req, res) => {
     }
 })
 
-router.post('/create/motorcycle', async (req, res) => {
+router.post('/create', async (req, res) => {
     try {
-        const { motorcycleName } = req.body
-        console.log('motorcycleName', motorcycleName)
+        const { motorcycleName, enginesId } = req.body
+        console.log('motorcycleName...', req.body)
         const newMotorcycle = await Motorcycle.create({
             motorcycleName,
             createdAt: new Date().toISOString(),
             updatedAt: new Date().toISOString(),
+            enginesId,
         })
 
         res.status(201).json({
@@ -47,7 +48,7 @@ router.post('/create/motorcycle', async (req, res) => {
     }
 })
 
-router.patch('/update/motorcycle/:id', async (req, res) => {
+router.patch('/update/:id', async (req, res) => {
     try {
         const id = req.params.id
         const motorcycleName = req.body.motorcycleName
@@ -72,7 +73,7 @@ router.patch('/update/motorcycle/:id', async (req, res) => {
     }
 })
 
-router.delete('/delete/motorcycle/:id', async (req, res) => {
+router.delete('/delete/:id', async (req, res) => {
     try {
         const id = req.params.id
         const motorCycleList = await Motorcycle.destroy({ where: { id: id } })

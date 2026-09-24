@@ -15,6 +15,15 @@ const Motorcycle = sequelize.define('Motorcycle', {
         type: DataTypes.DATE,
         field: 'updatedAt',
     },
+    engineId: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        unique: false,
+        references: {
+            model: 'engines',
+            key: 'id',
+        },
+    },
 })
 
 sequelize.sync({

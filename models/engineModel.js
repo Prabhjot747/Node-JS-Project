@@ -127,16 +127,6 @@ const engines = sequelize.define('engines', {
         type: DataTypes.DATE,
         field: 'updatedAt',
     },
-    motorcycleId: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-        unique: false,
-        references: {
-            model: 'Motorcycle',
-            key: 'id',
-            deferrable: undefined,
-        },
-    },
 })
 
 sequelize.sync({

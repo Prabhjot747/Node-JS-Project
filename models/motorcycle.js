@@ -1,7 +1,13 @@
 const { DataTypes } = require('sequelize')
 const { sequelize } = require('../database/index')
+const { engines } = require('./engineModel')
 
 const Motorcycle = sequelize.define('Motorcycle', {
+    id: {
+        type: DataTypes.INTEGER,
+        primaryKey: true,
+        autoIncrement: true,
+    },
     motorcycleName: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -18,13 +24,18 @@ const Motorcycle = sequelize.define('Motorcycle', {
     engineId: {
         type: DataTypes.INTEGER,
         allowNull: false,
-        unique: false,
+        // unique: false,
         references: {
             model: 'engines',
             key: 'id',
         },
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE',
     },
 })
+
+engines.hasOne(Motorcycle)
+Motorcycle.belongsTo(engines)
 
 sequelize.sync({
     force: false,

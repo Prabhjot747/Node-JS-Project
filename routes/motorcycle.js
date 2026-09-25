@@ -26,13 +26,12 @@ router.get('/get', async (req, res) => {
 
 router.post('/create', async (req, res) => {
     try {
-        const { motorcycleName, enginesId } = req.body
         console.log('motorcycleName...', req.body)
         const newMotorcycle = await Motorcycle.create({
-            motorcycleName,
+            motorcycleName: req.body.motorcycleName,
             createdAt: new Date().toISOString(),
             updatedAt: new Date().toISOString(),
-            enginesId,
+            engineId: req.body.engineId,
         })
 
         res.status(201).json({

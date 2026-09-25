@@ -9,6 +9,16 @@ createdAt DATETIME  NOT NULL COMMENT "created time",
 updatedAt DATETIME  NOT NULL COMMENT "updated time"
 )
 
+
+CREATE TABLE motorcycles(
+id INT AUTO_INCREMENT PRIMARY KEY,
+motorcycleName VARCHAR(20) NOT NULL UNIQUE,
+createdAt DATETIME  NOT NULL COMMENT "created time",
+updatedAt DATETIME  NOT NULL COMMENT "updated time",
+engineId INT,
+FOREIGN KEY (engineId) REFERENCES engines(id)
+)   
+
 -- Spare part
 CREATE TABLE engines(
 id INT AUTO_INCREMENT PRIMARY KEY,
@@ -32,5 +42,5 @@ lubrication VARCHAR(20) NOT NULL,
 airCleaner VARCHAR(50) NOT NULL,
 createdAt DATETIME  NOT NULL COMMENT "created time",
 updatedAt DATETIME  NOT NULL COMMENT "updated time",
-motorcycleId INT, FOREIGN KEY (motorcycleId) REFERENCES motorcycle(id)
+-- motorcycleId INT, FOREIGN KEY (motorcycleId) REFERENCES motorcycle(id)
 );

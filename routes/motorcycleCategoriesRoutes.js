@@ -1,10 +1,10 @@
 const express = require('express')
 const router = express.Router()
-const { Motorcycle } = require('../models/motorcycle.js')
+const { MotorcycleCategory } = require('../models/motorcycleCategories')
 
 router.get('/get', async (req, res) => {
     try {
-        const motorCycleList = await Motorcycle.findAll()
+        const motorCycleList = await MotorcycleCategory.findAll()
         // res.send(200).json({
         //     data:motorCycleList
         // })
@@ -22,12 +22,10 @@ router.get('/get', async (req, res) => {
 router.post('/create', async (req, res) => {
     try {
         console.log('motorcycleName...', req.body)
-        const newMotorcycle = await Motorcycle.create({
-            motorcycleName: req.body.motorcycleName,
+        const newMotorcycle = await MotorcycleCategory.create({
+            categoryName: req.body.categoryName,
             createdAt: new Date().toISOString(),
             updatedAt: new Date().toISOString(),
-            engineId: req.body.engineId,
-            categoryId: req.body.categoryId,
         })
 
         res.status(201).json({
@@ -48,7 +46,7 @@ router.patch('/update/:id', async (req, res) => {
         const id = req.params.id
         const motorcycleName = req.body.motorcycleName
         console.log('req.body..', req.body)
-        const motorCycleList = await Motorcycle.update(
+        const motorCycleList = await MotorcycleCategory.update(
             {
                 motorcycleName: motorcycleName,
                 updatedAt: new Date().toISOString(),
@@ -71,7 +69,9 @@ router.patch('/update/:id', async (req, res) => {
 router.delete('/delete/:id', async (req, res) => {
     try {
         const id = req.params.id
-        const motorCycleList = await Motorcycle.destroy({ where: { id: id } })
+        const motorCycleList = await MotorcycleCategory.destroy({
+            where: { id: id },
+        })
         console.log('motorCycleList...', motorCycleList)
         res.status(200).json({
             message: 'Motorcycle deleted successfully',

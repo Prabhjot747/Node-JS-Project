@@ -1,6 +1,7 @@
 const { DataTypes } = require('sequelize')
 const { sequelize } = require('../database/index')
 const { engines } = require('./engineModel')
+const { MotorcycleCategory } = require('./motorcycleCategories')
 
 const Motorcycle = sequelize.define('Motorcycle', {
     id: {
@@ -32,10 +33,23 @@ const Motorcycle = sequelize.define('Motorcycle', {
         onDelete: 'CASCADE',
         onUpdate: 'CASCADE',
     },
+    categoryId: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        references: {
+            model: 'motorcyclesCategories',
+            key: 'id',
+        },
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE',
+    },
 })
 
 engines.hasOne(Motorcycle)
 Motorcycle.belongsTo(engines)
+
+MotorcycleCategory.hasOne(Motorcycle)
+Motorcycle.belongsTo(MotorcycleCategory)
 
 sequelize.sync({
     force: false,

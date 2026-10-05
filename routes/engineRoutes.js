@@ -2,6 +2,12 @@ const express = require('express')
 const router = express.Router()
 const { engines } = require('../models/engineModel.js')
 
+/**
+ * @swagger
+ * /get:
+ *   get:
+ *     description: contains a reference outside this file
+ */
 router.get('/get', async (req, res) => {
     try {
         const enginesList = await engines.findAll()
@@ -14,6 +20,24 @@ router.get('/get', async (req, res) => {
         })
     }
 })
+
+/**
+ * @swagger
+ *
+ * /create:
+ *   post:
+ *     produces:
+ *       - application/json
+ *     parameters:
+ *       - name: username
+ *         in: formData
+ *         required: true
+ *         type: string
+ *       - name: password
+ *         in: formData
+ *         required: true
+ *         type: string
+ */
 
 router.post('/create', async (req, res) => {
     try {

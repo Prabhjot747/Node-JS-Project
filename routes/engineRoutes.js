@@ -21,24 +21,6 @@ router.get('/get', async (req, res) => {
     }
 })
 
-/**
- * @swagger
- *
- * /create:
- *   post:
- *     produces:
- *       - application/json
- *     parameters:
- *       - name: username
- *         in: formData
- *         required: true
- *         type: string
- *       - name: password
- *         in: formData
- *         required: true
- *         type: string
- */
-
 router.post('/create', async (req, res) => {
     try {
         console.log('enginesName...', req.body)

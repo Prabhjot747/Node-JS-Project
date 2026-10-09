@@ -21,6 +21,27 @@ router.get('/get', async (req, res) => {
     }
 })
 
+// {
+//     "name":"UCE",
+//     "dimensionLength":120,
+//     "dimensionWidth":120,
+//     "dimensionHeight":130,
+//     "strokeWidth":200,
+//     "boreWidth":180,
+//     "maximumPowerBHP":210,
+//     "maximumPowerHP":250,
+//     "ignitionSystem":"KICK START, SELF START, ELECTRIC FUEL INJECTION",
+//     "gearBox":"5 SPEED",
+//     "engineOil":"SEMI SYTHETIC",
+//     "engineStart":"KICK START",
+//     "engineDisplacement":349,
+//     "maximumTorqueNM":150,
+//     "maximumTorqueRPM":6000,
+//     "clutch":"WET PLATE",
+//     "lubrication":"CASTROL LUBRICANTS",
+//     "airCleaner":"PAPER ELEMENT"
+// }
+
 router.post('/create', async (req, res) => {
     try {
         console.log('enginesName...', req.body)
